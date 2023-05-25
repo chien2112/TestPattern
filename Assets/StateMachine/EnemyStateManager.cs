@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class EnemyStateManager : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI txtState;
     EnemyBaseState currentState;
     public EnemyDetectState detectState = new EnemyDetectState();
     public EnemyInspectState inspectState = new EnemyInspectState();
@@ -14,6 +15,7 @@ public class EnemyStateManager : MonoBehaviour
     {
         currentState = patrolState;
         currentState.EnterState(this);
+        txtState.text = currentState.ToString();
     }
 
     // Update is called once per frame
@@ -27,6 +29,8 @@ public class EnemyStateManager : MonoBehaviour
     {
         currentState = state;
         state.EnterState(this);
+        txtState.text = state.ToString(); 
+        Debug.Log(txtState.text);
     }
 
 

@@ -11,6 +11,7 @@ public class EnemyObserver : MonoBehaviour, IObserver
     [SerializeField] EnemyController enemyController;
     [SerializeField] SpriteRenderer enemySprite;
     [SerializeField] Color enemyDeadColor;
+    [SerializeField] GameObject note;
 
     [SerializeField] float currentRight;
     [SerializeField] float maxRight;
@@ -24,6 +25,7 @@ public class EnemyObserver : MonoBehaviour, IObserver
     //Sound
     [SerializeField] AudioClip idleSound;
     [SerializeField] AudioClip hurtSound;
+    [SerializeField] AudioClip dieSound;
     AudioSource audioSource;
 
     //Actions data
@@ -68,7 +70,8 @@ public class EnemyObserver : MonoBehaviour, IObserver
     void EnemyHurt()
     {
         audioSource.clip = hurtSound; audioSource.loop = false; audioSource.Play();
-        
+        note.SetActive(false);
+
         //Update UI
         if (enemyController.Hp == 0)
         {
@@ -86,7 +89,7 @@ public class EnemyObserver : MonoBehaviour, IObserver
     }
     void EnemyDie()
     {
-        audioSource.clip = hurtSound; audioSource.loop = false; audioSource.Play();
+        audioSource.clip = dieSound; audioSource.volume = 0.3f; audioSource.loop = false; audioSource.Play();
         enemySprite.color = enemyDeadColor;
     }
 }

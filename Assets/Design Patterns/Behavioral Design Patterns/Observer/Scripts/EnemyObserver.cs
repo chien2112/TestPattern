@@ -62,7 +62,9 @@ public class EnemyObserver : MonoBehaviour, IObserver
         {
             enemyActionHandlers[action].Invoke();
         }
-    } 
+    }
+
+    #region enemy actions
     void EnemyIdle()
     {
         audioSource.clip = idleSound; audioSource.loop = true; audioSource.Play();
@@ -92,4 +94,6 @@ public class EnemyObserver : MonoBehaviour, IObserver
         audioSource.clip = dieSound; audioSource.volume = 0.3f; audioSource.loop = false; audioSource.Play();
         enemySprite.color = enemyDeadColor;
     }
+    #endregion
+
 }

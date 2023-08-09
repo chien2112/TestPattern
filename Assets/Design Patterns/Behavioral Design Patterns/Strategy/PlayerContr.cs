@@ -7,11 +7,10 @@ public class PlayerContr : MonoBehaviour
     public BaseWeapon fireSword;
     public BaseWeapon basicSword;
     public BaseWeapon currentWeapon;
-    public bool isSwitch;
+
     private void Start()
     {
         currentWeapon = basicSword;
-        isSwitch = false;
     }
     void Update()
     {
@@ -29,11 +28,10 @@ public class PlayerContr : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (!isSwitch)
+            if (currentWeapon == basicSword)
             {
                 fireSword.gameObject.SetActive(true);
                 basicSword.gameObject.SetActive(false);
-                isSwitch = !isSwitch;
                 currentWeapon = fireSword;
 
             }
@@ -41,7 +39,6 @@ public class PlayerContr : MonoBehaviour
             {
                 fireSword.gameObject.SetActive(false);
                 basicSword.gameObject.SetActive(true);
-                isSwitch = !isSwitch;
                 currentWeapon = basicSword;
             }
         }   

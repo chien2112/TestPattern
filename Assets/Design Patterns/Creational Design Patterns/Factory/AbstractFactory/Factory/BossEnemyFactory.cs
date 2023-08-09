@@ -9,7 +9,7 @@ public class BossEnemyFactory : AbstractEnemyFactory
     {
         if (enemyName.StartsWith("RANGED"))
         {
-            var enemySpawn = Resources.Load("Factory/Close_Range_Boss") as GameObject; //asjdlkasjd
+            var enemySpawn = Resources.Load("Factory/Close_Range_Boss") as GameObject;
 
             if (enemySpawn != null)
             {
